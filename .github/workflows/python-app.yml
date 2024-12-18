@@ -23,8 +23,7 @@ jobs:
       run: docker build . --file Dockerfile --tag medhakommana/blogcomment:${GITHUB_SHA::8}
 
     - name: Log in to Docker Hub
-      run: |
-          echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
     - name: Push the Docker image
       run: docker push medhakommana/blogcomment:${GITHUB_SHA::8}
